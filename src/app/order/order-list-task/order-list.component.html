@@ -20,22 +20,40 @@
             <td>{{ task.name }}</td>
             <td>{{ task.assignee }}</td>
             <td>{{ task.formattedDate }}</td>
-            <td class="button-container">
+            <!-- <td class="button-container">
               <ng-container>
-                <button mat-button class="btn" (click)="openDetail(task.processInstanceId)">Chi tiết</button>
+                <button mat-button class="btn" (click)="openDetail(task.processInstanceId)">
+                  <i class="fas fa-search"></i>
+                </button>
               </ng-container>
-            </td>
+            </td> -->
 
             <td class="button-container">
               <ng-container *ngIf="task.name === 'Xác Nhận Hóa Đơn'; else defaultButtons">
-                <button class="btn accept-btn" (click)="acceptTask(task.id, true)">Chấp nhận</button>
-                <button class="btn reject-btn" (click)="acceptTask(task.id, false)">Từ chối</button>
+              
+                <button class="btn accept-btn" (click)="acceptTask(task.id, true)">
+                  <i class="fas fa-check "></i>
+                </button>
+                <button mat-button class="btn" (click)="openDetail(task.processInstanceId)">
+                  <i class="fas fa-eye "></i>
+                </button>
+                <button class="btn reject-btn" (click)="acceptTask(task.id, false)">
+                  <i class="fa fa-times " aria-hidden="true"></i>
+                </button>
               </ng-container>
 
               <ng-template #defaultButtons>
                 <ng-container>
-                  <button class="btn accept-btn" (click)="payTask(task.id, false)">Tiền mặt</button>
-                  <button class="btn accept-btn"(click)="payTask(task.id, true)" >Banking</button>
+              
+                  <button class="btn accept-btn" (click)="payTask(task.id, false)">
+                    <i class="fas fa-money-bill-wave "></i>
+                  </button>
+                  <button mat-button class="btn" (click)="openDetail(task.processInstanceId)">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn accept-btn"(click)="payTask(task.id, true)" >
+                    <i class="fas fa-credit-card "></i>
+                  </button>
                 </ng-container>
               </ng-template>
 
