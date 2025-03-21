@@ -1,0 +1,31 @@
+<div *ngIf="isLoggedIn">
+  <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+
+  <div class="main-container">
+    <app-header
+      [collapsed]="isSideNavCollapsed"
+      [screenWidth]="screenWidth"
+    ></app-header>
+
+    <app-body
+      [collapsed]="isSideNavCollapsed"
+      [screenWidth]="screenWidth"
+    ></app-body>
+  </div>
+</div>
+
+<div *ngIf="!isLoggedIn" class="login-container">
+  <app-login></app-login>
+</div>
+
+<div class="loading-overlay">
+  <ngx-spinner
+    bdColor="rgba(0, 0, 0, 0.8)"
+    size="medium"
+    color="#fff"
+    type="square-jelly-box"
+    [fullScreen]="true"
+  >
+    <p style="color: white">Loading...</p>
+  </ngx-spinner>
+</div>

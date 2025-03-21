@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Thông tin người dùng</h2>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bold text-muted">ID:</div>
+        <div class="col-md-8">
+          <input class="form-control" [value]="dataUser.kcid" disabled />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bold text-muted">Tên đăng nhập:</div>
+        <div class="col-md-8">
+          <input class="form-control" [(ngModel)]="dataUser.username" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bold text-muted">Họ:</div>
+        <div class="col-md-8">
+          <input class="form-control" [(ngModel)]="dataUser.firstName" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bold text-muted">Tên:</div>
+        <div class="col-md-8">
+          <input class="form-control" [(ngModel)]="dataUser.lastName" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bold text-muted">Email:</div>
+        <div class="col-md-8">
+          <input class="form-control" [(ngModel)]="dataUser.email" />
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <button class="btn btn-secondary px-4 py-2 me-5 mb-3 mb-md-0">Cập nhật thông tin</button>
+        <button class="btn btn-secondary px-4 py-2 mb-3 mb-md-0">Cập nhật mật khẩu</button>
+      </div>
+      <div class="text-center mt-4">
+       
+        <button class="btn btn-secondary px-4 py-2 mb-3 mb-md-0" (click)="navigateToInvoices()">Danh sách hóa đơn</button>
+      </div>
+    </div>
+  </div>
+</div>

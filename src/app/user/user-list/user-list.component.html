@@ -1,0 +1,38 @@
+<h1>Danh sách tài khoản</h1>
+<div class="card">
+  <div class="card-head">Danh sách tài khoản</div>
+  <div class="card-body ">
+    <div class="table-responsive">
+    <table class="table  table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center">Họ Tên Khách Hàng</th>
+          <th class="text-center">Mail</th>
+          <th class="text-center">Tên Đăng Nhập</th>
+          <th class="text-center">Trạng Thái</th>
+          <th class="text-center">Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let data of listUser | paginate : { itemsPerPage: pageSize, currentPage: page }"
+        >
+          <td  class="text-center">{{ data.firstName + " " + data.lastName }}</td>
+          <td class="text-center">{{ data.email }}</td>
+          <td class="text-center">{{ data.userName }}</td>
+          <td class="status-container text-center ">
+            <span [ngClass]="data.online ? 'online-dot' : 'offline-dot'"></span>
+          </td>
+          <td class="button-container">
+            <button class="btn" (click)="goToDetail(data.kcid)">Chi tiết</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="control-page text-center mt-3">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

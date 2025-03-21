@@ -1,0 +1,67 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+  <div class="row w-75 shadow-lg rounded">
+    
+    <div class="col-md-6 bg-light d-none d-md-flex align-items-center justify-content-center">
+      <h1 class="fw-bold text-dark">ASIGNMENT FINAL</h1>
+    </div>
+
+    <div class="col-md-6 p-5">
+      
+      <ng-container *ngIf="!isForgotPassword">
+        <h2 class="fw-bold text-center">Hello Again !</h2>
+        <p class="text-center text-muted">Hãy đăng nhập với tài khoản admin của bạn</p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="mb-3">
+            <input type="text" id="username" class="form-control" formControlName="username" placeholder="Nhập tên đăng nhập" />
+            <div *ngIf="f['username']?.invalid && f['username']?.touched" class="text-danger">Tên đăng nhập là bắt buộc</div>
+          </div>
+
+          <div class="mb-3">
+            <input type="password" id="password" class="form-control" formControlName="password" placeholder="Nhập mật khẩu" />
+            <div *ngIf="f['password']?.invalid && f['password']?.touched" class="text-danger">Mật khẩu là bắt buộc</div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <input type="checkbox" id="rememberMe">
+              <label for="rememberMe" class="text-muted">Nhớ mật khẩu</label>
+            </div>
+            <a  class="text-decoration-none fw-bold btn-template" (click)="changeIsForgotPassword()">Quên mật khẩu</a>
+          </div>
+
+          <button class="btn btn-dark w-100 py-2">Đăng nhập</button>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center" >{{ errorMessage }}</div>
+        </form>
+
+        <p  class="text-center mt-3 ">
+          Bạn chưa có tài khoản? <a  class="fw-bold btn-template" (click)="openRegister()">Đăng ký</a>
+        </p>
+      </ng-container>
+
+      <ng-template #forgotPasswordTemplate>
+        <h2 class="fw-bold text-center">Quên Mật Khẩu</h2>
+        <p class="text-center text-muted">Nhập email của bạn để nhận hướng dẫn đặt lại mật khẩu</p>
+      
+        <form [formGroup]="forgotPasswordForm" (ngSubmit)="sendMail()">
+          <div class="mb-3">
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="Nhập email của bạn" />
+            <div *ngIf="f['email']?.invalid && f['email']?.touched" class="text-danger">Email không hợp lệ</div>
+          </div>
+      
+          <button class="btn btn-dark w-100 py-2"  [disabled]="forgotPasswordForm.invalid"> Gửi Yêu Cầu</button>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center">{{ errorMessage }}</div>
+          <div class="text-center mt-3">
+            <a href="" class="fw-bold" (click)="changeIsForgotPassword()">Quay lại Đăng Nhập</a>
+          </div>
+        </form>
+      </ng-template>
+  
+      <div *ngIf="isForgotPassword">
+        <ng-container *ngTemplateOutlet="forgotPasswordTemplate"></ng-container>
+
+      </div>
+
+    </div>
+  </div>
+</div>

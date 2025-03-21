@@ -1,0 +1,42 @@
+.container {
+    max-width: 800px;
+    margin-top: 40px;
+  }
+  
+  .card {
+    border-radius: 8px;              
+    border: 1px solid #ddd;         
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .font-weight-bold {
+    font-size: 1.1rem;
+    color: #495057;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+  
+  .col-md-8 {
+    font-size: 1rem;
+    color: #343a40;
+  }
+  
+  .row {
+    padding: 10px 0;
+  }
+  
+  input[type="password"] {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 1rem;
+  }
+  

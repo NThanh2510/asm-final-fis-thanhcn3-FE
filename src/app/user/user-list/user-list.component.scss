@@ -1,0 +1,62 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #0f2237;
+    color: white;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .button-container {
+    text-align: center;
+  }
+  
+  .accept-btn {
+    background-color: #2a7392;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .accept-btn:hover {
+    background-color: #063137;
+  }
+
+
+  .status-container {
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  
+  .online-dot, .offline-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .online-dot {
+    background-color: rgb(1, 215, 1); 
+  }
+  
+  .offline-dot {
+    background-color: rgb(67, 67, 67); 
+  }
+  

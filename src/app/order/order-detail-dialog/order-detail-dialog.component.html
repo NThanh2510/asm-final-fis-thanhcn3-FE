@@ -1,0 +1,48 @@
+<div class="card-header title text-white">
+  <h2 class="card-title text-center">CHI TIẾT ĐƠN HÀNG</h2>
+</div>
+<div class="card-body">
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <p><strong>Tên khách hàng:</strong> {{ data?.name }}</p>
+      <p><strong>Trạng thái:</strong> {{ data?.status }}</p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Tổng tiền:</strong> {{ data?.totalPrice | number : "1.0-0" }}đ
+      </p>
+      <p><strong>Ngày mua hàng:</strong> {{ data?.orderDate }}</p>
+    </div>
+    <div class="col-md-12">
+      <p><strong>Địa chỉ:</strong> {{ data?.address }}</p>
+    </div>
+  </div>
+  <hr />
+  <h3 class="text-center">Danh sách sản phẩm</h3>
+  <table class="table table-hover">
+    <tr>
+      <th scope="col" class="text-center">Sản phẩm</th>
+      <th scope="col" class="text-center">Số lượng</th>
+      <th scope="col" class="text-center">Giá</th>
+      <th scope="col" class="text-center">Tổng tiền</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let item of data?.details">
+        <td class="text-center">{{ item.productInfo }}</td>
+        <td class="text-center">{{ item.quantity }}</td>
+        <td class="text-center">{{ item.price | number : "1.0-0" }}đ</td>
+        <td class="text-center">{{ item.total | number : "1.0-0" }}đ</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row d-flex justify-content-center">
+    <div class="m-1 col-md-3">
+      <button mat-button class="btn btn-danger" (click)="close()">Đóng</button>
+    </div>
+    <div class="m-1 col-md-3">
+      <button mat-button class="btn btn-primary" (click)="exportBill(data.orderId)">
+        Xuất hóa đơn
+      </button>
+    </div>
+  </div>
+</div>

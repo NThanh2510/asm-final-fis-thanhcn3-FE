@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center align-items-center otp-check-dialog">
+  <div class="otp-container shadow-lg p-4 rounded">
+    <h3 class="text-center mb-3">Nhập Mã OTP</h3>
+    <p class="text-center mb-4">Chúng tôi đã gửi mã OTP tới mail của bạn.</p>
+
+    <div class="otp-input d-flex justify-content-center mt-4">
+  
+    <input type="text" maxlength="1" class="otp-field form-control mx-2" [(ngModel)]="otp[0]" (input)="moveToNext($event, 0)" (keydown)="moveToPrevious($event, 0)"/>
+    <input type="text" maxlength="1" class="otp-field form-control mx-2" [(ngModel)]="otp[1]" (input)="moveToNext($event, 1)" (keydown)="moveToPrevious($event, 1)"/>
+    <input type="text" maxlength="1" class="otp-field form-control mx-2" [(ngModel)]="otp[2]" (input)="moveToNext($event, 2)" (keydown)="moveToPrevious($event, 2)"/>
+    <input type="text" maxlength="1" class="otp-field form-control mx-2" [(ngModel)]="otp[3]" (input)="moveToNext($event, 3)" (keydown)="moveToPrevious($event, 3)"/>
+    <input type="text" maxlength="1" class="otp-field form-control mx-2" [(ngModel)]="otp[4]" (input)="moveToNext($event, 4)" (keydown)="moveToPrevious($event, 4)"/>
+    <input type="text" maxlength="1" class="otp-field form-control mx-2" [(ngModel)]="otp[5]" (input)="moveToNext($event, 5)" (keydown)="moveToPrevious($event, 5)"/>
+    
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center" >{{ errorMessage }}</div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-primary btn-block" (click)="submitOtp()">Xác nhận</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <p>Bạn chưa nhận được mã? <a href="#">Gửi lại mã OTP</a></p>
+    </div>
+  </div>
+</div>

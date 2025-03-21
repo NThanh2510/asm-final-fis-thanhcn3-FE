@@ -1,0 +1,82 @@
+<div class="container">
+  <h2 class="text-center">Đăng Ký Người Dùng Mới</h2>
+
+  <form [formGroup]="registerForm">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3 input-col">
+          <label for="username" class="form-label">Tên người dùng</label>
+          <input id="username" formControlName="username" type="text" class="form-control"
+            placeholder="Tên người dùng" />
+          <div *ngIf="f['username'].invalid && f['username'].touched" class="text-danger">
+            <small *ngIf="f['username'].hasError('required')">Tên người dùng là bắt buộc</small>
+            <small *ngIf="f['username'].hasError('minlength')">Tên người dùng phải có ít nhất 6 ký tự</small>
+          </div>
+        </div>
+
+        <div class="mb-3 input-col">
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input id="password" formControlName="password" type="password" class="form-control" placeholder="Mật khẩu" />
+          <div *ngIf="f['password'].invalid && f['password'].touched" class="text-danger">
+            <small *ngIf="f['password'].hasError('required')">Mật khẩu là bắt buộc</small>
+            <small *ngIf="f['password'].hasError('minlength')">Mật khẩu phải có ít nhất 6 ký tự</small>
+          </div>
+        </div>
+
+        <div class="mb-3 input-col">
+          <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+          <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control"
+            placeholder="Xác nhận mật khẩu" />
+          <div *ngIf="
+              registerForm.hasError('passwordsDoNotMatch') &&
+              registerForm.get('confirmPassword')?.touched
+            " class="text-danger">
+            <small>Mật khẩu không khớp</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3 input-col">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" formControlName="email" type="email" class="form-control" placeholder="Email" />
+          <div *ngIf="f['email'].invalid && f['email'].touched" class="text-danger">
+            <small *ngIf="f['email'].hasError('required')">Email là bắt buộc</small>
+            <small *ngIf="f['email'].hasError('email')">Email không hợp lệ</small>
+          </div>
+        </div>
+        <div class="mb-3 input-col">
+          <label for="firstName" class="form-label">Họ và Tên</label>
+          <input id="firstName" formControlName="firstName" type="text" class="form-control" placeholder="Họ và tên" />
+          <div *ngIf="f['firstName'].invalid && f['firstName'].touched" class="text-danger">
+            <small *ngIf="f['firstName'].hasError('required')">Họ và tên là bắt buộc</small>
+            <small *ngIf="f['firstName'].hasError('minlength')">Họ và tên phải có ít nhất 3 ký tự</small>
+          </div>
+        </div>
+
+        <div class="mb-3 input-col">
+          <label for="lastName" class="form-label">Tên</label>
+          <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Tên" />
+          <div *ngIf="f['lastName'].invalid && f['lastName'].touched" class="text-danger">
+            <small *ngIf="f['lastName'].hasError('required')">Tên là bắt buộc</small>
+            <small *ngIf="f['lastName'].hasError('minlength')">Tên phải có ít nhất 3 ký tự</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="Message" class="alert alert-primary mt-3 text-center">
+      {{ Message }}
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-dark m-3" [disabled]="registerForm.invalid" (click)="onSubmit()">
+        Đăng Ký
+      </button>
+      <button type="submit" class="btn btn-dark m-3" (click)="close()" >
+        Đăng nhập
+      </button>
+    </div>
+  </form>
+</div>

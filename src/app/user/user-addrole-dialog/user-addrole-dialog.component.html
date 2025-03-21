@@ -1,0 +1,26 @@
+<h1 mat-dialog-title class="text-center  fw-bold">Cập Nhật Vai Trò</h1>
+
+<div mat-dialog-content class="p-4">
+  <form [formGroup]="roleForm">
+
+    <div class="mb-3">
+      <label class="form-label fw-bold">Chọn Vai Trò:</label>
+      <div class="form-check" *ngFor="let role of roles">
+        <input class="form-check-input" type="radio" [value]="role" formControlName="role" id="{{role}}">
+        <label class="form-check-label" for="{{role}}">
+          <i class="bi bi-person-check me-1"></i> {{ role }}
+        </label>
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="d-flex justify-content-end gap-2">
+      <button mat-button class="btn btn-outline-secondary px-4" (click)="close()">
+        <i class="bi bi-x-circle"></i> Hủy bỏ
+      </button>
+      <button mat-button class="btn btn-primary px-4" type="submit" (click)="onSubmit()" [disabled]="roleForm.invalid">
+        <i class="bi bi-check-circle"></i> Xác nhận
+      </button>
+    </div>
+
+  </form>
+</div>

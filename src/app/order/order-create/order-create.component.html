@@ -1,0 +1,11 @@
+<p>coupen-create works!</p>
+
+<form [formGroup]="coupenCreateForm" >
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username" />
+    
+    <label for="age">Age:</label>
+    <input type="number" id="age" formControlName="age" />
+  
+    <button type="submit" [disabled]="!coupenCreateForm.valid">Submit</button>
+  </form>

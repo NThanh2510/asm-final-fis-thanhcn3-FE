@@ -1,0 +1,61 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+   th {
+    background-color: #0f2237;
+    color: white;
+  }
+  .btn{
+    justify-content: center;
+    width: 110px;
+    padding: 6px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .button-container{
+   
+    justify-content: center;
+    display: flex;
+  }
+  .accept-btn {
+    margin:0 15px 0 15px;
+    background-color: #328b37; 
+    color: white;
+  }
+  .accept-btn:hover {
+    background-color: rgb(32,37,49); 
+  }
+  .reject-btn {
+    margin:0 15px 0 15px;
+    background-color: #b94239; 
+    color: white;
+  }
+  .reject-btn:hover {
+    background-color: rgb(32,37,49); 
+  }
+  .btn:active {
+    transform: scale(0.98); 
+  }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .control-page{
+    padding-top: 15px;
+    justify-content: center;
+    display: flex;
+  }

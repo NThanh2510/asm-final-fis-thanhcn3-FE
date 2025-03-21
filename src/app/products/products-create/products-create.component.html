@@ -1,0 +1,164 @@
+<div class="container">
+  <h2>Nhập thông tin sản phẩm</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <label>Thương hiệu:</label>
+    <div class="d-flex align-items-center">
+      <select id="cate" class="form-select" (change)="changeCate($event)">
+        <option *ngFor="let category of dataCate" [value]="category.categoryId">
+          {{ category.name }}
+        </option>
+      </select>
+      <button type="button" class="btn btn-primary ms-2 ">+</button>
+    </div>
+
+    <label>Danh mục:</label>
+    <div class="d-flex align-items-center">
+      <select id="subCate" class="form-select" formControlName="subCategoryId">
+        <option *ngFor="let subCategory of dataSubCate" [value]="subCategory.subCategoryId">
+          {{ subCategory.name }}
+        </option>
+      </select>
+      <div *ngIf="productForm.get('subCategoryId')?.invalid && productForm.get('subCategoryId')?.touched" class="text-danger">
+        Vui lòng chọn danh mục.
+      </div>
+    </div>
+
+    <label>Tên sản phẩm:</label>
+    <input type="text" formControlName="name" required />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="text-danger">
+      Tên sản phẩm là bắt buộc và phải dài ít nhất 3 ký tự.
+    </div>
+
+    <label>Giá gốc:</label>
+    <input type="number" formControlName="basePrice" required />
+    <div *ngIf="productForm.get('basePrice')?.invalid && productForm.get('basePrice')?.touched" class="text-danger">
+      Giá gốc là bắt buộc và phải lớn hơn 0.
+    </div>
+
+    <label>Ảnh chính:</label>
+    <input type="url" formControlName="mainImg" required />
+    <div *ngIf="productForm.get('mainImg')?.invalid && productForm.get('mainImg')?.touched" class="text-danger">
+      Ảnh chính là bắt buộc và phải là một URL hợp lệ.
+    </div>
+
+    <label>Ngày tạo:</label>
+    <input type="date" formControlName="createDate" required />
+    <div *ngIf="productForm.get('createDate')?.invalid && productForm.get('createDate')?.touched" class="text-danger">
+      Ngày tạo là bắt buộc.
+    </div>
+
+    <label>Bảo hành (tháng):</label>
+    <input type="number" formControlName="warranty" required />
+    <div *ngIf="productForm.get('warranty')?.invalid && productForm.get('warranty')?.touched" class="text-danger">
+      Bảo hành là bắt buộc và phải lớn hơn 0 tháng.
+    </div>
+
+    <label>Kích thước màn hình:</label>
+    <input type="text" formControlName="screenSize" required />
+    <div *ngIf="productForm.get('screenSize')?.invalid && productForm.get('screenSize')?.touched" class="text-danger">
+      Kích thước màn hình là bắt buộc.
+    </div>
+
+    <label>Độ phân giải màn hình:</label>
+    <input type="text" formControlName="screenResolution" required />
+    <div *ngIf="productForm.get('screenResolution')?.invalid && productForm.get('screenResolution')?.touched" class="text-danger">
+      Độ phân giải màn hình là bắt buộc.
+    </div>
+
+    <label>Chip xử lý:</label>
+    <input type="text" formControlName="processor" required />
+    <div *ngIf="productForm.get('processor')?.invalid && productForm.get('processor')?.touched" class="text-danger">
+      Chip xử lý là bắt buộc.
+    </div>
+
+    <label>Camera sau:</label>
+    <input type="text" formControlName="rearCamera" required />
+    <div *ngIf="productForm.get('rearCamera')?.invalid && productForm.get('rearCamera')?.touched" class="text-danger">
+      Camera sau là bắt buộc.
+    </div>
+
+    <label>Camera trước:</label>
+    <input type="text" formControlName="frontCamera" required />
+    <div *ngIf="productForm.get('frontCamera')?.invalid && productForm.get('frontCamera')?.touched" class="text-danger">
+      Camera trước là bắt buộc.
+    </div>
+
+    <label>Dung lượng pin:</label>
+    <input type="text" formControlName="battery" required />
+    <div *ngIf="productForm.get('battery')?.invalid && productForm.get('battery')?.touched" class="text-danger">
+      Dung lượng pin là bắt buộc.
+    </div>
+
+    <label>Hỗ trợ sạc nhanh:</label>
+    <input type="checkbox" formControlName="fastCharging" />
+
+    <label>Chống nước:</label>
+    <input type="checkbox" formControlName="water_resistance" />
+
+    <label>Ngày ra mắt:</label>
+    <input type="date" formControlName="releaseDate" required />
+    <div *ngIf="productForm.get('releaseDate')?.invalid && productForm.get('releaseDate')?.touched" class="text-danger">
+      Ngày ra mắt là bắt buộc.
+    </div>
+
+    <label>Hệ điều hành:</label>
+    <select formControlName="os">
+      <option [value]="1">Android</option>
+      <option [value]="2">iOS</option>
+    </select>
+    <div *ngIf="productForm.get('os')?.invalid && productForm.get('os')?.touched" class="text-danger">
+      Hệ điều hành là bắt buộc.
+    </div>
+
+    <label>Thiết kế:</label>
+    <input type="text" formControlName="design" required />
+    <div *ngIf="productForm.get('design')?.invalid && productForm.get('design')?.touched" class="text-danger">
+      Thiết kế là bắt buộc.
+    </div>
+
+    <label>Chất liệu:</label>
+    <input type="text" formControlName="material" required />
+    <div *ngIf="productForm.get('material')?.invalid && productForm.get('material')?.touched" class="text-danger">
+      Chất liệu là bắt buộc.
+    </div>
+
+    <label>Trọng lượng (g):</label>
+    <input type="number" formControlName="weight" required />
+    <div *ngIf="productForm.get('weight')?.invalid && productForm.get('weight')?.touched" class="text-danger">
+      Trọng lượng là bắt buộc và phải lớn hơn 0.
+    </div>
+
+    <label>Loại pin:</label>
+    <input type="text" formControlName="batteryType" required />
+    <div *ngIf="productForm.get('batteryType')?.invalid && productForm.get('batteryType')?.touched" class="text-danger">
+      Loại pin là bắt buộc.
+    </div>
+
+    <label>Mạng di động:</label>
+    <input type="text" formControlName="network" required />
+    <div *ngIf="productForm.get('network')?.invalid && productForm.get('network')?.touched" class="text-danger">
+      Mạg di động là bắt buộc.
+    </div>
+
+    <label>SIM:</label>
+    <input type="text" formControlName="sim" required />
+    <div *ngIf="productForm.get('sim')?.invalid && productForm.get('sim')?.touched" class="text-danger">
+      SIM là bắt buộc.
+    </div>
+
+    <label>Wi-Fi:</label>
+    <input type="text" formControlName="wifi" required />
+    <div *ngIf="productForm.get('wifi')?.invalid && productForm.get('wifi')?.touched" class="text-danger">
+      Wi-Fi là bắt buộc.
+    </div>
+
+    <label>GPS:</label>
+    <input type="checkbox" formControlName="gps" />
+
+    <label>NFC:</label>
+    <input type="checkbox" formControlName="nfc" />
+
+    <button type="submit" [disabled]="productForm.invalid">Lưu sản phẩm</button>
+  </form>
+</div>

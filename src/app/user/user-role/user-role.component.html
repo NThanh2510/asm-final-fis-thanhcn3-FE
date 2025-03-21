@@ -1,0 +1,56 @@
+<h1>Quản lí vai trò</h1>
+
+<div class="card shadow-lg">
+  <div class="card-body">
+    <div class="row g-3 mb-3">
+      <div class="col-md-2">
+        <label for="role" class="form-label fw-bold">Tìm kiếm vai trò:</label>
+        <select id="role" class="form-select" (change)="onRoleChange($event)">
+          <option value="">Tất cả</option>
+          <option value="ADMIN">Admin</option>
+          <option value="Staff">Staff</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Tìm theo tên đăng nhập, Email:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Nhập username, Emaill" 
+          [(ngModel)]="searchTerm" 
+          (input)="onSearch()"/>
+      </div>
+
+    </div>
+
+    
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th class="text-center">Họ Tên</th>
+            <th class="text-center">Tên Đăng Nhập</th>
+            <th class="text-center">Mail</th>
+            <th class="text-center">Hành Động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of (filteredUser && searchTerm.length ? filteredUser : listUser) | paginate: { itemsPerPage: pageSize, currentPage: page }">
+            <td class="text-center">{{ data.firstName + " " + data.lastName }}</td>
+            <td class="text-center">{{ data.username || data.userName }}</td>
+            <td class="text-center">{{ data.email }}</td>
+            <td class="text-center">
+              <button class="btn  btn-sm " (click)="openDialog(data.kcid || data.id)">
+                 Cập nhật vai trò
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-3">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

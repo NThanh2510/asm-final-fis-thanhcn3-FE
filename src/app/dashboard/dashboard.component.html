@@ -1,0 +1,154 @@
+<div class="card">
+  <!-- <div class="card-head">Lorem ipsum - dashboard</div> -->
+  <div class="card-body">
+    <div class="card-chart row">
+      <div class="col-md-6 col-xl-3">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="mb-2 f-w-400 text-muted text">Doanh thu trong ngày</h6>
+            <h4 class="mb-3 text-report">{{ animatedRevenue | number }}đ</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="mb-2 f-w-400 text-muted text">Đơn hàng trong ngày</h6>
+            <h4 class="mb-3 text-report">{{ animatedCountOrdersInDay }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="mb-2 f-w-400 text-muted text">Số lượng khách hàng</h6>
+            <h4 class="mb-3 text-report">{{ animatedCountCustomers }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="mb-2 f-w-400 text-muted text">Số lượng sản phẩm</h6>
+            <h4 class="mb-3 text-report">200</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-xl-8">
+        <h5 class="card-title text fw-bold mt-4">Doanh thu theo tháng</h5>
+
+        <div class="card">
+          <div class="card-body">
+            <div *ngIf="isMessageVisible">
+              <canvas
+                class="sleep"
+                baseChart
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [type]="'bar'"
+              >
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-xl-4">
+        <h5 class="card-title text fw-bold mt-4">Thị Phần Bán Ra</h5>
+        <div class="card">
+          <div class="card-body">
+            <div class="card-text">
+              <canvas
+                class="chart"
+                baseChart
+                [type]="'pie'"
+                [datasets]="pieChartDatasets"
+                [labels]="pieChartLabels"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend"
+              >
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <h5 class="card-title text fw-bold mt-4">Danh sách hóa đơn</h5>
+        <div class="row mb-3">
+          <!-- <div class="col-md-6">
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Tìm kiếm theo họ tên..." 
+                [(ngModel)]="searchTerm" 
+                (input)="onSearch()" />
+            </div> -->
+
+          <div class="d-flex align-items-center">
+            <i class="fas fa-search fa-2x me-2"></i>
+            <input
+              type="text"
+              class="form-control m-2"
+              placeholder="Tìm kiếm theo họ tên..."
+              [(ngModel)]="searchTerm"
+              (input)="onSearch()"
+            />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="table-container">
+              <div class="table-container">
+                <!-- Table responsive -->
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Mã Đơn Hàng</th>
+                        <th>Họ Tên</th>
+                        <th>Email</th>
+                        <th>ĐƠN GIÁ</th>
+                        <th>Trạng Thái</th>
+                        <th>Ngày</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="
+                          let order of (filteredOrders && searchTerm.length
+                            ? filteredOrders
+                            : dataListOrder
+                          )
+                            | paginate
+                              : { itemsPerPage: pageSize, currentPage: page }
+                        "
+                      >
+                        <td>{{ order.saleOrderId }}</td>
+                        <td>{{ order.nameUser }}</td>
+                        <td>{{ order.mail }}</td>
+                        <td>{{ order.price | number }}đ</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.date }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Pagination controls -->
+                <div class="control-page text-center mt-3">
+                  <pagination-controls
+                    (pageChange)="page = $event"
+                  ></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->

@@ -1,0 +1,152 @@
+.head {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    z-index: 1;
+    transition: all .5s ease;
+    background-color: aliceblue;
+    padding: 1rem 1.5rem 0 1.5rem;
+    position: fixed;
+    top: 0;
+
+    .head-content {
+        background-color: #fff;
+        border-radius: .625rem;
+        box-shadow: 0 0 10px 0 rgb(198, 198, 198);
+        padding: .813rem 1.563rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .head-content-left {
+            .search-container {
+                position: relative;
+
+                .normal-search {
+                    .search {
+                        border: none;
+                        height: 2.375rem;
+                        padding-left: 2.5rem;
+                        padding-right: 1.25rem;
+                        background-color: #fff;
+                        box-shadow: none;
+                        border-radius: 1.8rem;
+                        outline: 0;
+                    }
+
+                    .search-icon {
+                        position: absolute;
+                        font-size: 1rem;
+                        line-height: 2.375rem;
+                        left: .85rem;
+                        top: 0;
+                        color: rgb(123, 123, 123);
+                    }
+                }
+            }
+        }
+
+        .head-content-right {
+            display: flex;
+            align-items: center;
+
+            .head-menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-left: 1.25rem;
+
+
+                .head-menu-item {
+                    .head-menu-item-btn {
+                        font-size: 18px;
+                        height: 42px;
+                        width: 42px;
+                        cursor: pointer;
+                        border: 1px solid transparent;
+                        border-radius: 50%;
+                        margin-left: 5px;
+                        outline: 0;
+                        color: #6c6c6c;
+                    }
+                }
+            }
+
+            .head-user-avatar-container{
+                margin-left: 20px;
+
+                .head-user-avatar{
+                    position: relative;
+
+                    .user-avatar{
+                        margin-bottom: -4px;
+                        width: 50px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 15px rgb(192, 192, 192);
+                        cursor: pointer;
+                    }
+                }
+
+             
+            }
+        }
+    }
+}
+
+.head-trimmed {
+    width: calc(100% - 16.5625rem);
+    margin-left: 16.5625rem;
+}
+
+.head-md-screen {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+}
+.overlay-user {
+    ul {
+        padding: 0.5rem 0;
+        list-style: none;
+        width: 12rem;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.2s ease;
+            border-radius: 0;
+
+            .icon {
+                font-size: 18px;
+                margin-right: 12px;
+                color: #555;
+                transition: color 0.3s;
+            }
+
+            span {
+                flex-grow: 1;
+                margin-left: 5px;
+            }
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.05);
+                transform: translateX(4px);
+            }
+
+            &:active {
+                background: rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        li:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    }
+}

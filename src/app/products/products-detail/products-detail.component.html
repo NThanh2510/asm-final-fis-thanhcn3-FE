@@ -1,0 +1,158 @@
+<div class="container">
+  <h1>CHI TIẾT SẢN PHẨM</h1>
+  <div class="card">
+    <div class="card-header">Chi tiết</div>
+  
+    <div class="card-body row justify-content-center">
+      
+      <div class="col-md-6 card">
+        
+        <div class="text-center mb-3 mt-3">
+          <h3>{{ dataList?.name }}</h3>
+        </div>
+        <div class="text-center mb-1">
+          <img
+            [src]="dataList.mainImg"
+            class="img-fluid rounded"
+            style="width: 200px; height: 200px; object-fit: cover"
+            alt="{{ dataList?.name }}"
+          />
+        </div>
+        <div class="text-center mb-1">
+          <p><strong>Hãng:</strong> {{ dataList?.categoryName }}</p>
+        </div>
+        <div class="text-center mb-1">
+          <p><strong>Bảo hành:</strong> {{ dataList?.warranty }} months</p>
+        </div>
+        <div class="text-center mb-1">
+          <p><strong>Ngày tạo:</strong> {{ dataList?.createDate }}</p>
+        </div>
+
+        <div class="row text-center ">
+          <div class="col-md-6">
+            <div class="text-center mb-3">
+              <p><strong>Kích thước màn hình:</strong> {{ dataList?.screenSize }} inch</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Độ phân giải:</strong> {{ dataList?.screenResolution }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Bộ xử lý:</strong> {{ dataList?.processor }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Camera sau:</strong> {{ dataList?.rearCamera }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Camera trước:</strong> {{ dataList?.frontCamera }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Pin:</strong> {{ dataList?.battery }} mAh</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Sạc nhanh:</strong> {{ dataList?.fastCharging ? "Yes" : "No" }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Khả năng chống nước:</strong> {{ dataList?.water_resistance ? "Yes" : "No" }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Hệ điều hành:</strong> {{ dataList?.os }}</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="text-center mb-3">
+              <p><strong>Thiết kế:</strong> {{ dataList?.design }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Chất liệu:</strong> {{ dataList?.material }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Trọng lượng:</strong> {{ dataList?.weight }} kg</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Loại pin:</strong> {{ dataList?.batteryType }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Mạng:</strong> {{ dataList?.network || "Not available" }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>SIM:</strong> {{ dataList?.sim }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>Wi-Fi:</strong> {{ dataList?.wifi }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>GPS:</strong> {{ dataList?.gps }}</p>
+            </div>
+            <div class="text-center mb-3">
+              <p><strong>NFC:</strong> {{ dataList?.nfc ? "Yes" : "No" }}</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h5 class="text-center mb-4">Các option</h5>
+        <ng-template [ngIf]="isAddFormVisible">
+          <form [formGroup]="optionForm" (ngSubmit)="onSubmit()" class="border p-4 rounded shadow-sm">
+            <h3 class="text-center">Thêm mới</h3>
+            
+            <div class="mb-2">
+              <label for="color" class="form-label">Màu:</label>
+              <input type="text" formControlName="color" id="color" class="form-control" required />
+            </div>
+        
+            <div class="mb-2">
+              <label for="colorPriceAdjustment" class="form-label">Giá của màu (VND):</label>
+              <input type="number" formControlName="colorPriceAdjustment" id="colorPriceAdjustment" class="form-control" required />
+            </div>
+
+            <div class="mb-2">
+              <label for="storageRam" class="form-label">Bộ nhớ (GB):</label>
+              <input type="text" formControlName="storageRam" id="storageRam" class="form-control" required />
+            </div>
+        
+            <div class="mb-2">
+              <label for="storageRamPriceAdjustment" class="form-label">Giá của Bộ nhớ (VND):</label>
+              <input type="number" formControlName="storageRamPriceAdjustment" id="storageRamPriceAdjustment" class="form-control" required />
+            </div>
+        
+            <div class="mb-2">
+              <label for="quantity" class="form-label">Số lượng:</label>
+              <input type="number" formControlName="quantity" id="quantity" class="form-control" required />
+            </div>
+        
+        
+            <div class="mb-3 text-center">
+              <button type="submit" class="btn btn-success">Lưu sản phẩm</button>
+              <button type="button" (click)="toggleAddProductForm()" class="btn btn-danger ms-2">Hủy</button>
+            </div>
+          </form>
+        </ng-template>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">Màu</th>
+              <th class="text-center" scope="col">Bộ nhớ trong</th>
+              <th class="text-center" scope="col">Tổng tiền</th>
+              <th class="text-center" scope="col">Số lượng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of dataList?.options">
+              <td class="text-center">{{ data.color }}</td>
+              <td class="text-center">{{ data.storageRam }}</td>
+              <td class="text-center">{{ data.finalPrice + dataList.basePrice | number:'1.0-0' }}</td>
+              <td class="text-center">{{ data.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="toggleAddProductForm()" class="btn btn-primary">Thêm mới</button>
+        
+      </div>
+    </div>
+
+
+  </div>
+</div>

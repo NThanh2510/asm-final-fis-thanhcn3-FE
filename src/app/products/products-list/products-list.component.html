@@ -1,0 +1,59 @@
+<div class="container">
+    <h1>DANH SÁCH ĐƠN HÀNG</h1>
+    <div class="card">
+      <div class="card-header">Danh sách đơn hàng</div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="row g-3 mb-3">
+            <div class="col-md-2 ">
+              <label for="role" class="form-label fw-bold">Tìm kiếm hãng:</label>
+              <select id="role" class="form-select"  (change)="filterProductsByCategory($event)">
+                <option value="">Tất cả</option>
+                <option *ngFor="let category of dataCategoryName" [value]="category">{{ category }} </option>
+              </select>
+            </div>
+            <div class="col-md-2" *ngIf="checkSearch">
+              <label for="role" class="form-label fw-bold">Tìm kiếm loại:</label>
+              <select id="role" class="form-select" (change)="filterSubProductsByCategory($event)">
+                <option value="">Tất cả</option>
+                <option *ngFor="let subCategory of dataSubCategoryName" [value]="subCategory">{{ subCategory }}</option>
+              </select>
+            </div>   
+          </div>
+          <table class="table  table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Ảnh</th>
+                <th class="text-center">Hãng</th>
+                <th class="text-center">Tên sản phẩm</th>
+                <th class="text-center">Giá cơ bản</th>
+                <th class="text-center">Bảo Hành</th>
+                <th class="text-center">Ngày tạo</th>
+                <th class="text-center">Hành Động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dataList | paginate: { itemsPerPage: pageSize, currentPage: page }">
+                <td class="text-center">{{ data.id }}</td>
+                <td class="text-center">
+                  <img src="{{data.mainImage}}" class="img-fluid" style="width: 80px; height: 80px; object-fit: cover;">
+                </td>
+                <td class="text-center">{{ data.categoryName }}</td>
+                <td class="text-center">{{ data.productName }}</td>
+                <td class="text-center">{{ data.basePrice | number:'1.0-0' }}đ</td>
+                <td class="text-center">{{ data.warranty }} tháng</td>
+                <td class="text-center">{{ data.createDate }}</td>
+                <td class="text-center">
+                  <button mat-button (click)="submitDetail(data.id)" class="btn">Chi tiết</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>

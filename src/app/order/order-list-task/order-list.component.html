@@ -1,0 +1,50 @@
+<h1>Đơn hàng chờ kiểm duyệt</h1>
+<div class="card">
+  <div #canvas style="width: 100%; height: 600px; border: 1px solid #ccc;"></div>
+    <div class="card-head">Danh sách đơn hàng</div>
+    <div class="card-body">
+      
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Loại xác thực</th>
+            <th>Khách hàng</th>
+            <th>Ngày tạo</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of dataList | paginate: { itemsPerPage: pageSize, currentPage: page }">
+            <td>{{ task.id }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.assignee }}</td>
+            <td>{{ task.formattedDate }}</td>
+            <td class="button-container">
+              <ng-container>
+                <button mat-button class="btn" (click)="openDetail(task.processInstanceId)">Chi tiết</button>
+              </ng-container>
+            </td>
+
+            <td class="button-container">
+              <ng-container *ngIf="task.name === 'Xác Nhận Hóa Đơn'; else defaultButtons">
+                <button class="btn accept-btn" (click)="acceptTask(task.id, true)">Chấp nhận</button>
+                <button class="btn reject-btn" (click)="acceptTask(task.id, false)">Từ chối</button>
+              </ng-container>
+
+              <ng-template #defaultButtons>
+                <ng-container>
+                  <button class="btn accept-btn" (click)="payTask(task.id, false)">Tiền mặt</button>
+                  <button class="btn accept-btn"(click)="payTask(task.id, true)" >Banking</button>
+                </ng-container>
+              </ng-template>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="control-page">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    </div>
+</div>
